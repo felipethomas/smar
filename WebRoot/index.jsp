@@ -1,26 +1,20 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Mundo Wumpus</title>
+		<meta http-equiv="description" content="Sistema Multiagente Reativo">
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'index.jsp' starting page</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-  </head>
-  
-  <body>
-    This is my JSP page. <br>
-  </body>
+		<!-- CSS do Ext JS 4 -->
+		<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" />
+	</head>
+	
+	<!-- Configuracao do Ext JS 4 -->
+	<script type="text/javascript" src="extjs/ext-debug-w-comments.js"></script>
+
+	<!-- Configuracao da app -->
+	<script type="text/javascript" src="app.js"></script>
+	
+	<!-- Configuracao do Ext JS 4 -->
+	<script type="text/javascript" src="extjs/locale/ext-lang-pt_BR.js"></script>
 </html>
