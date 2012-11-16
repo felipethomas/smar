@@ -14,7 +14,13 @@ Ext.Loader.setConfig({enabled : true});
 Ext.Loader.setPath('sma', 'app');
 
 Ext.require([
-	'Ext.container.Viewport'
+	'Ext.container.Viewport',
+	'Ext.resizer.Splitter',
+	'Ext.layout.container.Border',
+	'Ext.resizer.BorderSplitter',
+	'Ext.resizer.Splitter',
+	'Ext.resizer.SplitterTracker',
+	'Ext.layout.container.Column'
 ]);
 
 Ext.application({
@@ -23,12 +29,10 @@ Ext.application({
     appFolder: 'app',
     
     controllers: [
-    	'Estruturas'
+    	'Configuracoes'
     ],
     
     launch: function() {
-    	var altura = '10%';
-    	
     	Ext.create('Ext.container.Viewport', {
 		    layout: 'border',
 		    items: [{
@@ -39,9 +43,9 @@ Ext.application({
 		    }, {
 		        region: 'south',
 		        title: 'Console',
-		        collapsible: true,
+		        collapsible: false,
 		        split: true,
-		        minHeight: 100
+		        height: 100
 		    }, {
 		        region: 'east',
 		        title: 'Configura&ccedil;&otilde;es',
@@ -51,247 +55,234 @@ Ext.application({
 		    }, {
 		        region: 'center',
 		        xtype: 'panel',
+		        border: false,
 		        layout:'column',
+		        defaults: {
+		        	border: false,
+		        	columnWidth: 0.10,
+		        	defaults: {
+			        	tipo: 'sala'
+			        }
+		        },
 			    items: [{
-			        columnWidth: 0.10,
 			        items: [{
-			            html: 'Sala',
-			            id:'a1',
-			            height: altura
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala',
-			            height: altura
+			            bodyCls: 'fundo-agente'
 			        }, {
-			            html: 'Sala',
-			            height: altura
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala',
-			            height: altura
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala',
-			            height: altura
+			            bodyCls: 'fundo-sala'
 			        },{
-			            html: 'Sala',
-			            height: altura
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala',
-			            height: altura
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala',
-			            height: altura
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala',
-			            height: altura
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala',
-			            height: altura
+			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
-			        columnWidth: 0.10,
 			        items: [{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        },{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
-			        columnWidth: 0.10,
 			        items: [{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        },{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
-			        columnWidth: 0.10,
 			        items: [{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        },{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
-			        columnWidth: 0.10,
 			        items: [{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        },{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
-			        columnWidth: 0.10,
 			        items: [{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        },{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
-			        columnWidth: 0.10,
 			        items: [{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        },{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
-			        columnWidth: 0.10,
 			        items: [{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        },{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
-			        columnWidth: 0.10,
 			        items: [{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        },{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
-			        columnWidth: 0.10,
 			        items: [{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        },{
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }, {
-			            html: 'Sala'
+			            bodyCls: 'fundo-sala'
 			        }]
 			    }]
 		    }]

@@ -7,6 +7,9 @@
 
 		<!-- CSS do Ext JS 4 -->
 		<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" />
+		
+		<!-- CSS da app -->
+		<link rel="stylesheet" type="text/css" href="resources/style.css" />
 	</head>
 	
 	<!-- Configuracao do Ext JS 4 -->

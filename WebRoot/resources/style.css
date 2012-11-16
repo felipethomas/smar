@@ -1,0 +1,9 @@
+.fundo-sala {
+	background-image: url(images/sala.jpg) !important;
+	background-repeat: no-repeat;
+}
+
+.fundo-agente {
+	background-image: url(images/agente.png) !important;
+	background-repeat: no-repeat;
+}
