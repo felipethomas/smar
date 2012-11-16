@@ -1,9 +1,34 @@
 .fundo-sala {
-	background-image: url(images/sala.jpg) !important;
+	background-image: url(images/sala-opaca.jpg) !important;
 	background-repeat: no-repeat;
 }
 
-.fundo-agente {
-	background-image: url(images/agente.png) !important;
+.fundo-vermelho {
+	background-image: url(images/sala-vermelha.png) !important;
+	background-repeat: no-repeat;
+}
+
+.fundo-azul {
+	background-image: url(images/sala-azul.png) !important;
+	background-repeat: no-repeat;
+}
+
+.fundo-verde {
+	background-image: url(images/sala-verde.png) !important;
+	background-repeat: no-repeat;
+}
+
+.fundo-agente-vermelho {
+	background-image: url(images/sala-agente-vermelho.png) !important;
+	background-repeat: no-repeat;
+}
+
+.fundo-agente-azul {
+	background-image: url(images/sala-agente-azul.png) !important;
+	background-repeat: no-repeat;
+}
+
+.fundo-agente-verde {
+	background-image: url(images/sala-agente-verde.png) !important;
 	background-repeat: no-repeat;
 }

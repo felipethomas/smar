@@ -68,7 +68,7 @@ Ext.application({
 			        items: [{
 			            bodyCls: 'fundo-sala'
 			        }, {
-			            bodyCls: 'fundo-agente'
+			            bodyCls: 'fundo-sala'
 			        }, {
 			            bodyCls: 'fundo-sala'
 			        }, {
@@ -87,6 +87,28 @@ Ext.application({
 			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
+			        items: [{
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        },{
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }]
+			    }/*, {
 			        items: [{
 			            bodyCls: 'fundo-sala'
 			        }, {
@@ -262,29 +284,7 @@ Ext.application({
 			        }, {
 			            bodyCls: 'fundo-sala'
 			        }]
-			    }, {
-			        items: [{
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        },{
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }]
-			    }]
+			    }*/]
 		    }]
 		});
     }
