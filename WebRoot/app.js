@@ -5,7 +5,7 @@
  * http://www.sencha.com/license
  *
  * Projeto Guardiao
- * Fortaleza - Ceará
+ * Fortaleza - Ceara
  * http://www.insystem.com.br
  *
  * @author Insystem
@@ -108,28 +108,6 @@ Ext.application({
 			        }, {
 			            bodyCls: 'fundo-sala'
 			        }]
-			    }/*, {
-			        items: [{
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        },{
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }, {
-			            bodyCls: 'fundo-sala'
-			        }]
 			    }, {
 			        items: [{
 			            bodyCls: 'fundo-sala'
@@ -284,7 +262,29 @@ Ext.application({
 			        }, {
 			            bodyCls: 'fundo-sala'
 			        }]
-			    }*/]
+			    }, {
+			        items: [{
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        },{
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }, {
+			            bodyCls: 'fundo-sala'
+			        }]
+			    }]
 		    }]
 		});
     }

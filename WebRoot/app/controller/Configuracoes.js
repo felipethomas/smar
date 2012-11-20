@@ -4,6 +4,8 @@ Ext.define('sma.controller.Configuracoes', {
     models: [],
     stores: [],
     
+    indexs: [],
+    
     init: function() {
         this.control({
         	'viewport panel[region="center"]': {
@@ -16,90 +18,74 @@ Ext.define('sma.controller.Configuracoes', {
 		var me = this,
 			parcialHeight 		= height/10,
 			paineis 			= panel.query('panel[tipo="sala"]'),
-			totalPaineis		= paineis.length,
-			indexsSalas			= me.buscarIndexsSalas(totalPaineis),
-			indexsAgentes		= me.buscarIndexsAgentes(totalPaineis, indexsSalas);
+			totalPaineis		= paineis.length;
 			
-		//console.log(indexsSalas);
-		//console.log(indexsAgentes);
+		me.montarArrayIndex(totalPaineis);
+		
+		var indexsSalas			= me.buscarIndexsSalas(),
+			indexsAgentes		= me.buscarIndexsAgentes();
 			
-		/*Ext.Array.each(paineis, function(painel, index, paineisItself) {
+		Ext.Array.each(paineis, function(painel, index, paineisItself) {
 		    painel.setHeight(parcialHeight);
 		    
 		    me.definirSalas(painel, index, indexsSalas);
 		    me.definirAgentes(painel, index, indexsAgentes);
-		});*/
+		});
 		
 	},
 	
-	buscarIndexsSalas: function(total) {
-		var indexSalaVermelha 	= Math.floor((Math.random()*total)),
-			indexSalaAzul  		= this.buscarIndexSalaAzul(indexSalaVermelha, total),
-			indexSalaVerde  	= this.buscarIndexSalaVerde(indexSalaVermelha, indexSalaAzul, total);
+	montarArrayIndex: function(totalPaineis) {
+		var me = this;
+		
+		for(var i = 0; i < totalPaineis; i++) {
+			me.indexs.push(i);
+		}
+		
+		return me.indexs;
+	},
+	
+	buscarIndexsSalas: function() {
+		var me = this,
+			proximo, indexSalaVermelha, indexSalaAzul, indexSalaVerde;
+		
+		proximo				= Math.floor((Math.random()*me.indexs.length)),
+		indexSalaVermelha 	= me.indexs[proximo];
+		
+		me.indexs.splice(proximo,1);
+		
+		proximo				= Math.floor((Math.random()*me.indexs.length)),
+		indexSalaAzul  		= me.indexs[proximo];
+		
+		me.indexs.splice(proximo,1);
+			
+		proximo				= Math.floor((Math.random()*me.indexs.length)),
+		indexSalaVerde  	= me.indexs[proximo];
+		
+		me.indexs.splice(proximo,1);
 		
 		return [indexSalaVermelha, indexSalaAzul, indexSalaVerde];
 	},
 	
-	buscarIndexSalaAzul: function(indexSalaVermelha, total) {
-		var indexSalaAzul = Math.floor((Math.random()*total));
+	buscarIndexsAgentes: function() {
+		var me = this,
+			proximo, indexAgenteVermelho, indexAgenteAzul, indexAgenteVerde;
 		
-		if(indexSalaAzul == indexSalaVermelha) {
-			this.buscarIndexSalaAzul(indexSalaVermelha);
-		} else {
-			return indexSalaAzul;
-		}
-	},
-	
-	buscarIndexSalaVerde: function(indexSalaVermelha, indexSalaAzul, total) {
-		var indexSalaVerde = Math.floor((Math.random()*total));
+		proximo				= Math.floor((Math.random()*me.indexs.length)),
+		indexAgenteVermelho	= me.indexs[proximo];
 		
-		if(indexSalaVerde == indexSalaVermelha || indexSalaVerde == indexSalaAzul) {
-			this.buscarIndexSalaVerde(indexSalaVermelha, indexSalaAzul);
-		} else {
-			return indexSalaVerde;
-		}
-	},
-	
-	buscarIndexsAgentes: function(total, salas) {
-		var indexAgenteVermelho	= this.buscarIndexAgenteVermelho(salas, total),
-			indexAgenteAzul  	= this.buscarIndexAgenteAzul(salas, indexAgenteVermelho, total),
-			indexAgenteVerde  	= this.buscarIndexAgenteVerde(salas, indexAgenteVermelho, indexAgenteAzul, total);
+		me.indexs.splice(proximo,1);
+		
+		proximo				= Math.floor((Math.random()*me.indexs.length)),
+		indexAgenteAzul		= me.indexs[proximo];
+		
+		me.indexs.splice(proximo,1);
+			
+		proximo				= Math.floor((Math.random()*me.indexs.length)),
+		indexAgenteVerde  	= me.indexs[proximo];
+		
+		me.indexs.splice(proximo,1);
 			
 		return [indexAgenteVermelho, indexAgenteAzul, indexAgenteVerde];
-	},
-	
-	buscarIndexAgenteVermelho: function(salas, total) {
-		var indexAgenteVermelho = Math.floor((Math.random()*total));
-		
-		//console.log('indexAgenteVermelho - ' + indexAgenteVermelho);
-		
-		if(this.contem(salas, indexAgenteVermelho)) {
-			//console.log('c - ' + indexAgenteVermelho);
-			this.buscarIndexAgenteVermelho(salas, total);
-		} else {
-			//console.log('else - ' + indexAgenteVermelho);
-			return indexAgenteVermelho;
-		}
-	},
-	
-	buscarIndexAgenteAzul: function(salas, indexAgenteVermelho, total) {
-		var indexAgenteAzul = Math.floor((Math.random()*total));
-		
-		if(this.contem(salas, indexAgenteAzul) || indexAgenteAzul == indexAgenteVermelho) {
-			this.buscarIndexAgenteAzul(salas, indexAgenteVermelho, total);
-		} else {
-			return indexAgenteAzul;
-		}
-	},
-	
-	buscarIndexAgenteVerde: function(salas, indexAgenteVermelho, indexAgenteAzul, total) {
-		var indexAgenteVerde = Math.floor((Math.random()*total));
-		
-		if(this.contem(salas, indexAgenteVerde) || indexAgenteVerde == indexAgenteVermelho || indexAgenteVerde == indexAgenteAzul) {
-			this.buscarIndexAgenteVerde(salas, indexAgenteVermelho, indexAgenteAzul, total);
-		} else {
-			return indexAgenteVerde;
-		}
 	},
 	
 	definirSalas: function(painel, index, indexsSalas) {
