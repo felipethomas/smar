@@ -35,19 +35,32 @@ Ext.application({
     launch: function() {
     	Ext.create('Ext.container.Viewport', {
 		    layout: 'border',
+		    cls: 'viewport',
 		    padding: '5 5 5 5',
 		    items: [{
 		        region: 'south',
 		        title: 'Console',
 		        collapsible: false,
 		        split: true,
+		        autoScroll: true,
 		        bodyCls: 'panel-console'
 		    }, {
 		        region: 'east',
 		        title: 'Configura&ccedil;&otilde;es',
 		        collapsible: false,
 		        split: true,
-		        width: 150
+		        width: 150,
+		        xtype: 'gridpanel',
+		        store: 'Configuracoes',
+		        columns: [{
+	                text     : 'Atributo',
+	                flex     : 1,
+	                dataIndex: 'atributo'
+	            }, {
+	                text     : 'Valor',
+	                flex     : 1,
+	                dataIndex: 'valor'
+	            }]
 		    }, {
 		        region: 'center',
 		        xtype: 'panel',
@@ -61,22 +74,50 @@ Ext.application({
 			        }
 		        },
 		        dockedItems: [{
-		            xtype: 'toolbar',
+		        	xtype: 'toolbar',
 		            dock: 'top',
 		            ui: 'footer',
+		            padding: '0 0 1 0',
 		            items: [{
-		            	xtype: 'button',
-		            	text: 'Iniciar',
-			        	action: 'iniciar'
-		            }, {
-		            	xtype: 'button',
-		            	text: 'Pausar',
-			        	action: 'pausar'
-		            }, {
-		            	xtype: 'button',
-		            	text: 'Parar',
-			        	action: 'parar'
-		            }]
+				        xtype: 'buttongroup',
+				        columns: 5,
+				        defaults: {
+				        	scale: 'small'
+				        },
+				        items: [{
+			            	xtype: 'button',
+			            	text: 'Iniciar',
+				        	action: 'iniciar',
+				        	iconCls: 'button-play'
+			            }, {
+			            	xtype: 'button',
+			            	text: 'Pausar',
+				        	action: 'pausar',
+				        	iconCls: 'button-pause'
+			            }, {
+			            	xtype: 'button',
+			            	text: 'Parar',
+				        	action: 'parar',
+				        	iconCls: 'button-stop'
+			            }]
+				    }, {
+				        xtype: 'buttongroup',
+				        columns: 5,
+				        defaults: {
+				        	scale: 'small'
+				        },
+				        items: [{
+			            	xtype: 'button',
+			            	text: 'Acelerar',
+				        	action: 'acelerar',
+				        	iconCls: 'button-acelerar'
+			            }, {
+			            	xtype: 'button',
+			            	text: 'Retardar',
+				        	action: 'retardar',
+				        	iconCls: 'button-retardar'
+			            }]
+				    }]
 		        }],
 			    items: [{
 			        items: [{

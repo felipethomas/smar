@@ -1,3 +1,7 @@
+.viewport {
+	background: #ffffff;	
+}
+
 .fundo-sala {
 	background-image: url(images/sala-opaca.jpg) !important;
 	background-repeat: no-repeat;
@@ -35,5 +39,26 @@
 
 .panel-console {
 	padding: 10px 10px 10px 2px;
+	font-family: monospace;
+	font-size: 12;
 }
+
+.button-play {
+	background-image: url(images/play.png) !important;
+}
+
+.button-pause {
+	background-image: url(images/pause.png) !important;
+}
+
+.button-stop {
+	background-image: url(images/stop.png) !important;
+}
+
+.button-acelerar {
+	background-image: url(images/acelerar.png) !important;
+}
+
+.button-retardar {
+	background-image: url(images/retardar.png) !important;
 }
