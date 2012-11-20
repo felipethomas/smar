@@ -6,32 +6,62 @@ Ext.define('sma.controller.Configuracoes', {
     
     indexs: [],
     
+    refs: [{
+    	ref: 'console',
+        selector: 'panel[region="south"]'
+    }, {
+    	ref: 'central',
+        selector: 'panel[region="center"]'
+    }],
+    
     init: function() {
         this.control({
-        	'viewport panel[region="center"]': {
+        	/*'viewport panel[region="center"]': {
 				boxready: this.montarSalas
+			},*/
+        	
+        	'viewport': {
+				boxready: this.welcome
+			},
+			
+			'button[action="iniciar"]': {
+				click: this.iniciar
 			}
 		});
     },
     
-	montarSalas: function(panel, width, height, eOpts) {
+    console: function(texto) {
+    	this.getConsole().update(texto);
+    },
+    
+    welcome: function(viewport, width, height) {
+    	this.console("-> Sistema pronto para uso.");
+    	this.getConsole().setHeight(height-45-(44*10));
+    },
+    
+    iniciar: function(button, e) {
+		var center = this.getCentral();
+		
+		button.disable();
+		
+		this.montarSalas(center);
+	},
+    
+	montarSalas: function(panel) {
 		var me = this,
-			parcialHeight 		= height/10,
-			paineis 			= panel.query('panel[tipo="sala"]'),
-			totalPaineis		= paineis.length;
+			south			= me.getConsole(),	
+			paineis 		= panel.query('panel[tipo="sala"]'),
+			totalPaineis	= paineis.length;
 			
 		me.montarArrayIndex(totalPaineis);
 		
-		var indexsSalas			= me.buscarIndexsSalas(),
-			indexsAgentes		= me.buscarIndexsAgentes();
+		var indexsSalas		= me.buscarIndexsSalas(),
+			indexsAgentes	= me.buscarIndexsAgentes();
 			
 		Ext.Array.each(paineis, function(painel, index, paineisItself) {
-		    painel.setHeight(parcialHeight);
-		    
 		    me.definirSalas(painel, index, indexsSalas);
 		    me.definirAgentes(painel, index, indexsAgentes);
 		});
-		
 	},
 	
 	montarArrayIndex: function(totalPaineis) {
@@ -117,23 +147,20 @@ Ext.define('sma.controller.Configuracoes', {
 	    
 	    if(index == indexAgenteAzul) {
 	    	painel.body.replaceCls('fundo-sala', 'fundo-agente-azul');
+	    	/*painel.body.fadeOut({
+	    		opacity: 0.30,
+	    		duration: 2000,
+	    		callback: function() {
+	    			painel.body.replaceCls('fundo-agente-azul', 'fundo-sala');
+	    			painel.body.setOpacity(1, false);
+	    		}
+	    	});*/
 	    }
 	    
 	    if(index == indexAgenteVerde) {
+	    	//painel.body.setOpacity(0.25, false);
 	    	painel.body.replaceCls('fundo-sala', 'fundo-agente-verde');
+	    	//painel.body.fadeIn({opacity: 1, duration: 5000});
 	    }
-	},
-	
-	contem: function(conjunto, item) {
-		var resposta = false;
-		
-		for(var i in conjunto) {
-			if(conjunto[i] == item) {
-				resposta = true;
-				break;
-			}
-		}
-		
-		return resposta;
 	}
 });

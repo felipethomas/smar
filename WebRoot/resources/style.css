@@ -32,3 +32,8 @@
 	background-image: url(images/sala-agente-verde.png) !important;
 	background-repeat: no-repeat;
 }
+
+.panel-console {
+	padding: 10px 10px 10px 2px;
+}
+}

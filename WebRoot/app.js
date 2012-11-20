@@ -35,23 +35,19 @@ Ext.application({
     launch: function() {
     	Ext.create('Ext.container.Viewport', {
 		    layout: 'border',
+		    padding: '5 5 5 5',
 		    items: [{
-		        region: 'north',
-		        html: 'Mundo Wumpus',
-		        margin: '0 0 5 0',
-		        border: false
-		    }, {
 		        region: 'south',
 		        title: 'Console',
 		        collapsible: false,
 		        split: true,
-		        height: 100
+		        bodyCls: 'panel-console'
 		    }, {
 		        region: 'east',
 		        title: 'Configura&ccedil;&otilde;es',
-		        collapsible: true,
+		        collapsible: false,
 		        split: true,
-		        minWidth: 150
+		        width: 150
 		    }, {
 		        region: 'center',
 		        xtype: 'panel',
@@ -64,224 +60,342 @@ Ext.application({
 			        	tipo: 'sala'
 			        }
 		        },
+		        dockedItems: [{
+		            xtype: 'toolbar',
+		            dock: 'top',
+		            ui: 'footer',
+		            items: [{
+		            	xtype: 'button',
+		            	text: 'Iniciar',
+			        	action: 'iniciar'
+		            }, {
+		            	xtype: 'button',
+		            	text: 'Pausar',
+			        	action: 'pausar'
+		            }, {
+		            	xtype: 'button',
+		            	text: 'Parar',
+			        	action: 'parar'
+		            }]
+		        }],
 			    items: [{
 			        items: [{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        },{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
 			        items: [{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        },{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
 			        items: [{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        },{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
 			        items: [{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        },{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
 			        items: [{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        },{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
 			        items: [{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        },{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
 			        items: [{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        },{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
 			        items: [{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        },{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
 			        items: [{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        },{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }]
 			    }, {
 			        items: [{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        },{
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }, {
+			        	height: 44,
 			            bodyCls: 'fundo-sala'
 			        }]
 			    }]
