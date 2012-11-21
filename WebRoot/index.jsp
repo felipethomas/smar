@@ -4,7 +4,8 @@
 		<meta charset="utf-8">
 		<title>Mundo Wumpus</title>
 		<meta http-equiv="description" content="Sistema Multiagente Reativo">
-
+		<link rel="shortcut icon" href="resources/images/wumpus.png">
+		
 		<!-- CSS do Ext JS 4 -->
 		<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" />
 		

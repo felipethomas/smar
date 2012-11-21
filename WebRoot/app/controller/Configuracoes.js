@@ -74,31 +74,53 @@ Ext.define('sma.controller.Configuracoes', {
 	
 	ativarDeslocamentoAutomatico: function(paineis) {
 		var me = this,
-			posicao, proximo, index;
+			posicao, proximo, index, taskVermelho, taskAzul, taskVerde;
+			
+		me.console("Salas nao visitadas: " + me.indexs);
 		
-		var taskVermelho = Ext.create('Ext.util.DelayedTask', function() {
+		taskVermelho = Ext.create('Ext.util.DelayedTask', function() {
 			proximo	= me.buscarProximo(),
 			index	= me.indexs[proximo];
 			me.indexs.splice(proximo,1);
 			posicao = me.deslocarAgente(paineis, index, 'vermelho');
 			me.getStore('Configuracoes').getAt(9).set('valor', posicao);
 			
-			var taskAzul = Ext.create('Ext.util.DelayedTask', function() {
+			if(me.indexs.length == 0) {
+				me.console("Acabou. Observe o resultado ao lado.");
+				return false;
+			}
+			
+			me.console("Salas nao visitadas: " + me.indexs);
+			
+			taskAzul = Ext.create('Ext.util.DelayedTask', function() {
 				proximo	= me.buscarProximo(),
 				index	= me.indexs[proximo];
 				me.indexs.splice(proximo,1);
 				posicao = me.deslocarAgente(paineis, index, 'azul');
 				me.getStore('Configuracoes').getAt(10).set('valor', posicao);
 				
-				var taskVerde = Ext.create('Ext.util.DelayedTask', function() {
+				if(me.indexs.length == 0) {
+					me.console("Acabou. Observe o resultado ao lado.");
+					return false;
+				}
+			
+				me.console("Salas nao visitadas: " + me.indexs);
+				
+				taskVerde = Ext.create('Ext.util.DelayedTask', function() {
 					proximo	= me.buscarProximo(),
 					index	= me.indexs[proximo];
 					me.indexs.splice(proximo,1);
 					posicao = me.deslocarAgente(paineis, index, 'verde');
 					me.getStore('Configuracoes').getAt(11).set('valor', posicao);
 					
-					taskVermelho.delay(me.velocidade);
-					
+					if(me.indexs.length == 0) {
+						me.console("Acabou. Observe o resultado ao lado.");
+						return false;
+					} else {
+						taskVermelho.delay(me.velocidade);
+					}
+			
+					me.console("Salas nao visitadas: " + me.indexs);
 				}, this);
 			
 				taskVerde.delay(me.velocidade);
@@ -114,7 +136,7 @@ Ext.define('sma.controller.Configuracoes', {
 	
 	deslocarAgente: function(paineis, index, cor) {
 		var me 		= this,
-			proximo	= paineis[index],
+			panel	= paineis[index],
 			atual	= Ext.dom.Element.get('agente-'+cor);
 			
 		atual.fadeOut({
@@ -126,15 +148,15 @@ Ext.define('sma.controller.Configuracoes', {
     		}
     	});
     	
-    	proximo.body.setOpacity(0.25, false);
-    	proximo.body.replaceCls('fundo-sala', 'fundo-agente-'+cor);
-    	proximo.body.fadeIn({
+    	panel.body.setOpacity(0.25, false);
+    	panel.body.replaceCls('fundo-sala', 'fundo-agente-'+cor);
+    	panel.body.fadeIn({
     		opacity: 1,
     		duration: me.velocidade*0.60
     	});
     	
     	atual.set({id: ''});
-    	proximo.body.set({id: 'agente-'+cor});
+    	panel.body.set({id: 'agente-'+cor});
     	
     	return index;
 	},
