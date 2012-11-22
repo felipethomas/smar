@@ -66,6 +66,7 @@ Ext.application({
 		        xtype: 'panel',
 		        border: false,
 		        layout:'column',
+		        cls: 'panel-central',
 		        defaults: {
 		        	border: false,
 		        	columnWidth: 0.10,
@@ -89,7 +90,7 @@ Ext.application({
 			            	text: 'Iniciar',
 				        	action: 'iniciar',
 				        	iconCls: 'button-play'
-			            }, {
+			            }/*, {
 			            	xtype: 'button',
 			            	text: 'Pausar',
 				        	action: 'pausar',
@@ -99,7 +100,7 @@ Ext.application({
 			            	text: 'Parar',
 				        	action: 'parar',
 				        	iconCls: 'button-stop'
-			            }]
+			            }*/]
 				    }, {
 				        xtype: 'buttongroup',
 				        columns: 5,

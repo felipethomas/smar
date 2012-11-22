@@ -2,6 +2,10 @@
 	background: #ffffff;	
 }
 
+.panel-central .x-panel-body-default {
+	border-color: #ffffff;
+}
+
 .fundo-sala {
 	background-image: url(images/sala-opaca.jpg) !important;
 	background-repeat: no-repeat;
@@ -34,6 +38,21 @@
 
 .fundo-agente-verde {
 	background-image: url(images/sala-agente-verde.png) !important;
+	background-repeat: no-repeat;
+}
+
+.fundo-sala-agente-vermelho {
+	background-image: url(images/fundo-sala-agente-vermelho.png) !important;
+	background-repeat: no-repeat;
+}
+
+.fundo-sala-agente-azul {
+	background-image: url(images/fundo-sala-agente-azul.png) !important;
+	background-repeat: no-repeat;
+}
+
+.fundo-sala-agente-verde {
+	background-image: url(images/fundo-sala-agente-verde.png) !important;
 	background-repeat: no-repeat;
 }
 

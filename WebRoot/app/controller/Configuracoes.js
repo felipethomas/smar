@@ -9,6 +9,10 @@ Ext.define('sma.controller.Configuracoes', {
     
     indexs: [],
     
+    salas: [],
+    
+    ultimas: [],
+    
     velocidade: 5000, 
     
     refs: [{
@@ -74,47 +78,102 @@ Ext.define('sma.controller.Configuracoes', {
 	
 	ativarDeslocamentoAutomatico: function(paineis) {
 		var me = this,
-			posicao, proximo, index, taskVermelho, taskAzul, taskVerde;
+			posicao, proximo, index, taskVermelho, taskAzul, taskVerde, salaVermelhaBloqueada, salaAzulBloqueada, salaVerdeBloqueada;
 			
 		me.console("Salas nao visitadas: " + me.indexs);
 		
 		taskVermelho = Ext.create('Ext.util.DelayedTask', function() {
-			proximo	= me.buscarProximo(),
-			index	= me.indexs[proximo];
-			me.indexs.splice(proximo,1);
-			posicao = me.deslocarAgente(paineis, index, 'vermelho');
-			me.getStore('Configuracoes').getAt(9).set('valor', posicao);
-			
-			if(me.indexs.length == 0) {
+			if(salaVermelhaBloqueada && salaAzulBloqueada && salaVerdeBloqueada) {
 				me.console("Acabou. Observe o resultado ao lado.");
+				me.exibirResultado();
 				return false;
 			}
 			
-			me.console("Salas nao visitadas: " + me.indexs);
-			
-			taskAzul = Ext.create('Ext.util.DelayedTask', function() {
+			if(salaVermelhaBloqueada != true) {
+				taskVermelho.cancel();
+				
 				proximo	= me.buscarProximo(),
 				index	= me.indexs[proximo];
 				me.indexs.splice(proximo,1);
-				posicao = me.deslocarAgente(paineis, index, 'azul');
-				me.getStore('Configuracoes').getAt(10).set('valor', posicao);
+				
+				if(me.salas[0] == index) {
+					posicao = me.ocuparSala(paineis, index, 'vermelho');
+					salaVermelhaBloqueada = true;
+				} else {
+					posicao = me.deslocarAgente(paineis, index, 'vermelho');
+				}
+				
+				me.ultimas[0] = posicao;
+				me.getStore('Configuracoes').getAt(9).set('valor', posicao);
 				
 				if(me.indexs.length == 0) {
+					me.console("Acabou. Observe o resultado ao lado.");
+					me.exibirResultado();
+					return false;
+				}
+				
+				me.console("Salas nao visitadas: " + me.indexs);
+			}
+					
+			taskAzul = Ext.create('Ext.util.DelayedTask', function() {
+				if(salaVermelhaBloqueada && salaAzulBloqueada && salaVerdeBloqueada) {
 					me.console("Acabou. Observe o resultado ao lado.");
 					return false;
 				}
 			
-				me.console("Salas nao visitadas: " + me.indexs);
-				
-				taskVerde = Ext.create('Ext.util.DelayedTask', function() {
+				if(salaAzulBloqueada != true) {
+					taskAzul.cancel();
+					
 					proximo	= me.buscarProximo(),
 					index	= me.indexs[proximo];
 					me.indexs.splice(proximo,1);
-					posicao = me.deslocarAgente(paineis, index, 'verde');
-					me.getStore('Configuracoes').getAt(11).set('valor', posicao);
+					
+					if(me.salas[1] == index) {
+						posicao = me.ocuparSala(paineis, index, 'azul');
+						salaAzulBloqueada = true;
+					} else {
+						posicao = me.deslocarAgente(paineis, index, 'azul');
+					}
+					
+					me.ultimas[1] = posicao;
+					me.getStore('Configuracoes').getAt(10).set('valor', posicao);
 					
 					if(me.indexs.length == 0) {
 						me.console("Acabou. Observe o resultado ao lado.");
+						me.exibirResultado();
+						return false;
+					}
+				
+					me.console("Salas nao visitadas: " + me.indexs);
+				}
+					
+				taskVerde = Ext.create('Ext.util.DelayedTask', function() {
+					if(salaVermelhaBloqueada && salaAzulBloqueada && salaVerdeBloqueada) {
+						me.console("Acabou. Observe o resultado ao lado.");
+						return false;
+					}
+			
+					if(salaVerdeBloqueada != true) {
+						taskVerde.cancel();
+						
+						proximo	= me.buscarProximo(),
+						index	= me.indexs[proximo];
+						me.indexs.splice(proximo,1);
+						
+						if(me.salas[2] == index) {
+							posicao = me.ocuparSala(paineis, index, 'verde');
+							salaVerdeBloqueada = true;
+						} else {
+							posicao = me.deslocarAgente(paineis, index, 'verde');
+						}
+						
+						me.ultimas[2] = posicao;
+						me.getStore('Configuracoes').getAt(11).set('valor', posicao);
+					}
+					
+					if(me.indexs.length == 0) {
+						me.console("Acabou. Observe o resultado ao lado.");
+						me.exibirResultado();
 						return false;
 					} else {
 						taskVermelho.delay(me.velocidade);
@@ -161,6 +220,55 @@ Ext.define('sma.controller.Configuracoes', {
     	return index;
 	},
 	
+	ocuparSala: function(paineis, index, cor) {
+		var me 		= this,
+			panel	= paineis[index],
+			atual	= Ext.dom.Element.get('agente-'+cor);
+			
+		atual.fadeOut({
+    		opacity: 0.30,
+    		duration: me.velocidade*0.20,
+    		callback: function() {
+    			atual.replaceCls('fundo-agente-'+cor, 'fundo-sala');
+    			atual.setOpacity(1, false);
+    		}
+    	});
+    	
+    	panel.body.setOpacity(0.25, false);
+    	panel.body.replaceCls('fundo-'+cor, 'fundo-sala-agente-'+cor);
+    	panel.body.fadeIn({
+    		opacity: 1,
+    		duration: me.velocidade*0.60
+    	});
+    	
+    	atual.set({id: ''});
+    	panel.body.set({id: 'agente-'+cor});
+    	
+    	return index;
+	},
+	
+	exibirResultado: function() {
+		var me = this;
+		
+		if(me.salas[0] == me.ultimas[0]) {
+			me.getStore('Configuracoes').getAt(14).set('valor', 'Alcan&ccedil;ou');
+		} else {
+			me.getStore('Configuracoes').getAt(14).set('valor', 'Falhou');
+		}
+		
+		if(me.salas[1] == me.ultimas[1]) {
+			me.getStore('Configuracoes').getAt(15).set('valor', 'Alcan&ccedil;ou');
+		} else {
+			me.getStore('Configuracoes').getAt(15).set('valor', 'Falhou');
+		}
+		
+		if(me.salas[2] == me.ultimas[2]) {
+			me.getStore('Configuracoes').getAt(16).set('valor', 'Alcan&ccedil;ou');
+		} else {
+			me.getStore('Configuracoes').getAt(16).set('valor', 'Falhou');
+		}
+	},
+	
 	buscarProximo: function() {
 		return Math.floor((Math.random()*(this.indexs.length-1)));
 	},
@@ -201,22 +309,13 @@ Ext.define('sma.controller.Configuracoes', {
 	
 	buscarIndexsSalas: function() {
 		var me = this,
-			proximo, indexSalaVermelha, indexSalaAzul, indexSalaVerde;
+			indexSalaVermelha, indexSalaAzul, indexSalaVerde;
 		
-		proximo				= this.buscarProximo(),
-		indexSalaVermelha 	= me.indexs[proximo];
+		indexSalaVermelha 	= me.indexs[this.buscarProximo()];
+		indexSalaAzul  		= me.indexs[this.buscarProximo()];
+		indexSalaVerde  	= me.indexs[this.buscarProximo()];
 		
-		me.indexs.splice(proximo,1);
-		
-		proximo				= this.buscarProximo(),
-		indexSalaAzul  		= me.indexs[proximo];
-		
-		me.indexs.splice(proximo,1);
-			
-		proximo				= this.buscarProximo(),
-		indexSalaVerde  	= me.indexs[proximo];
-		
-		me.indexs.splice(proximo,1);
+		me.salas = [indexSalaVermelha, indexSalaAzul, indexSalaVerde];
 		
 		return [indexSalaVermelha, indexSalaAzul, indexSalaVerde];
 	},
@@ -250,14 +349,17 @@ Ext.define('sma.controller.Configuracoes', {
 		
 		if(index == indexSalaVermelha) {
 	   		painel.body.replaceCls('fundo-sala', 'fundo-vermelho');
+	   		painel.body.set({id: 'sala-vermelho'});
 	    }
 	    
 	    if(index == indexSalaAzul) {
 	    	painel.body.replaceCls('fundo-sala', 'fundo-azul');
+	    	painel.body.set({id: 'sala-azul'});
 	    }
 	    
 	    if(index == indexSalaVerde) {
 	    	painel.body.replaceCls('fundo-sala', 'fundo-verde');
+	    	painel.body.set({id: 'sala-verde'});
 	    }
 	},
 	
@@ -283,10 +385,10 @@ Ext.define('sma.controller.Configuracoes', {
 	},
 	
 	acelerar: function() {
-		var velocidadeMaxima = 1000;
+		var velocidadeMaxima = 500;
 		
 		if(this.velocidade > velocidadeMaxima) {
-			this.velocidade -= 1000;
+			this.velocidade -= 500;
 			this.getStore('Configuracoes').getAt(1).set('valor', this.velocidade + ' ms');
 		}
 	},
@@ -295,7 +397,7 @@ Ext.define('sma.controller.Configuracoes', {
 		var velocidadeMinima = 10000;
 		
 		if(this.velocidade < velocidadeMinima) {
-			this.velocidade += 1000;
+			this.velocidade += 500;
 			this.getStore('Configuracoes').getAt(1).set('valor', this.velocidade + ' ms');
 		}
 	}

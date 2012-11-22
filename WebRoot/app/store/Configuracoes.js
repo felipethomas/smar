@@ -42,5 +42,20 @@ Ext.define('sma.store.Configuracoes', {
 	}, {
 		atributo: 'Verde',//11
 		valor: ''
+	}, {
+		atributo: '',
+		valor: ''
+	}, {
+		atributo: '<u>Final</u>',
+		valor: '<u>Objetivo</u>'
+	}, {
+		atributo: 'Vermelho',//14
+		valor: ''
+	}, {
+		atributo: 'Azul',//15
+		valor: ''
+	}, {
+		atributo: 'Verde',//16
+		valor: ''
 	}]
 });
